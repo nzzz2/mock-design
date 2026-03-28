@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adanan Yasmeen | Legal Excellence Since 2016</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'serif': ['Cormorant Garamond', 'serif'],
+                        'sans': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'stone': {
+                            50: '#fafaf9',
+                            100: '#f5f5f4',
+                            200: '#e7e5e4',
+                            300: '#d6d3d1',
+                            400: '#a8a29e',
+                            500: '#78716c',
+                            600: '#57534e',
+                            700: '#44403c',
+                            800: '#292524',
+                            900: '#1c1917',
+                        },
+                        'gold': {
+                            100: '#f9f1d8',
+                            200: '#f0e3b6',
+                            300: '#e6d494',
+                            400: '#dcc672',
+                            500: '#d4b85a',
+                            600: '#b99b3f',
+                            700: '#8f7530',
+                        }
+                    },
+                    letterSpacing: {
+                        'widest': '.25em',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .reveal-text {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        .practice-card {
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .practice-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .practice-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(212,184,90,0.03) 100%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+        
+        .practice-card:hover::before {
+            opacity: 1;
+        }
+        
+        .line-draw {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 2s ease forwards;
+        }
+        
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+        
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-pattern {
+            background-image: radial-gradient(circle at 1px 1px, rgba(120,113,108,0.15) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+        
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid #78716c;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            mix-blend-mode: difference;
+        }
+        
+        .custom-cursor.hover {
+            transform: scale(2);
+            background: rgba(212,184,90,0.1);
+            border-color: #d4b85a;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -2px;
+            left: 0;
+            background-color: #d4b85a;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .stat-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Readers Corner Specific Styles */
+        .article-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .article-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .article-card:hover .article-image {
+            transform: scale(1.05);
+        }
+        
+        .article-image {
+            transition: transform 0.7s ease;
+        }
+        
+        .category-pill {
+            transition: all 0.3s ease;
+        }
+        
+        .category-pill:hover {
+            background-color: #d4b85a;
+            color: #1c1917;
+        }
+        
+        .category-pill.active {
+            background-color: #1c1917;
+            color: #fafaf9;
+        }
+        
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+        }
+        
+        .expandable-content.expanded {
+            max-height: 1000px;
+            transition: max-height 0.5s ease-in-out;
+        }
+        
+        .guide-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .guide-item:hover .guide-icon {
+            transform: translateX(8px);
+        }
+        
+        .emergency-banner {
+            background: linear-gradient(135deg, #292524 0%, #44403c 100%);
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased overflow-x-hidden">
+
+    <div class="grain"></div>
+    <div class="custom-cursor hidden md:block" id="cursor"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-40 transition-all duration-500" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-24">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 border border-stone-400 flex items-center justify-center">
+                        <span class="font-serif text-2xl text-stone-700">AY</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-xl tracking-wide text-stone-900">Adanan Yasmeen</span>
+                        <span class="text-[10px] tracking-widest text-stone-500 uppercase">Advocate & Solicitors</span>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-12">
+                    <a href="#practice" class="nav-link text-xs tracking-widest uppercase text-stone-600 hover:text-stone-900 transition-colors">Practice</a>
+                    <a href="#readers-corner" class="nav-link text-xs tracking-widest uppercase text-stone-600 hover:text-stone-900 transition-colors">Readers Corner</a>
+                    <a href="#about" class="nav-link text-xs tracking-widest uppercase text-stone-600 hover:text-stone-900 transition-colors">About</a>
+                    <a href="#team" class="nav-link text-xs tracking-widest uppercase text-stone-600 hover:text-stone-900 transition-colors">Team</a>
+                    <a href="#contact" class="nav-link text-xs tracking-widest uppercase text-stone-600 hover:text-stone-900 transition-colors">Contact</a>
+                </div>
+
+                <button class="md:hidden text-stone-600" onclick="toggleMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-stone-100 absolute w-full border-t border-stone-200">
+            <div class="px-6 py-8 space-y-6">
+                <a href="#practice" class="block text-sm tracking-widest uppercase text-stone-600">Practice</a>
+                <a href="#readers-corner" class="block text-sm tracking-widest uppercase text-stone-600">Readers Corner</a>
+                <a href="#about" class="block text-sm tracking-widest uppercase text-stone-600">About</a>
+                <a href="#team" class="block text-sm tracking-widest uppercase text-stone-600">Team</a>
+                <a href="#contact" class="block text-sm tracking-widest uppercase text-stone-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center hero-pattern pt-24">
+        <div class="absolute inset-0 bg-gradient-to-b from-stone-50 via-transparent to-stone-50"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10 w-full">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8 fade-up">
+                    <div class="flex items-center space-x-4 text-stone-500 text-xs tracking-widest uppercase">
+                        <span>Est. 2016</span>
+                        <div class="w-12 h-px bg-stone-300"></div>
+                        <span>Kota Kinabalu | Sabah</span>
+                    </div>
+                    
+                    <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-stone-900 leading-[0.9]">
+                        Counsel<br>
+                        <span class="italic text-stone-600">with</span><br>
+                        Character
+                    </h1>
+                    
+                    <p class="text-stone-600 text-lg leading-relaxed max-w-md font-light">
+                        Where traditional legal expertise meets modern commercial insight. We navigate complexity with clarity, protecting your interests with unwavering dedication.
+                    </p>
+                    
+                    <div class="flex items-center space-x-8 pt-4">
+                        <a href="#contact" class="group relative px-8 py-4 bg-stone-900 text-stone-50 text-xs tracking-widest uppercase overflow-hidden">
+                            <span class="relative z-10">Consultation</span>
+                            <div class="absolute inset-0 bg-stone-700 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                        </a>
+                        <a href="#practice" class="text-xs tracking-widest uppercase text-stone-600 hover:text-stone-900 transition-colors border-b border-stone-300 pb-1">
+                            Our Expertise
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="relative hidden lg:block fade-up" style="transition-delay: 0.2s;">
+                    <div class="relative w-full aspect-[4/5] bg-stone-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" 
+                             alt="Elegant law office interior" 
+                             class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000">
+                        <div class="absolute inset-0 bg-stone-900/10"></div>
+                    </div>
+                    <div class="absolute -bottom-8 -left-8 bg-stone-50 p-8 shadow-xl max-w-xs">
+                        <p class="font-serif text-2xl text-stone-800 italic leading-relaxed">
+                            "Justice consists not in being neutral between right and wrong, but in finding out the right and upholding it."
+                        </p>
+                        <p class="text-xs text-stone-500 mt-4 tracking-widest uppercase">— Theodore Roosevelt</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-12 left-6 lg:left-12 flex items-center space-x-4 text-stone-400 text-xs tracking-widest">
+            <span>Scroll</span>
+            <div class="w-px h-12 bg-stone-300 animate-pulse"></div>
+        </div>
+    </section>
+
+    <!-- Practice Areas -->
+    <section id="practice" class="py-32 bg-stone-50 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-20 fade-up">
+                <span class="text-xs tracking-widest uppercase text-stone-500 block mb-4">Areas of Practice</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-stone-900">Comprehensive Legal Services</h2>
+                <div class="w-24 h-px bg-gold-400 mx-auto mt-8"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200">
+                <!-- Corporate/Commercial -->
+                <div class="practice-card bg-stone-50 p-12 relative group cursor-pointer fade-up">
+                    <div class="mb-6">
+                        <svg class="w-12 h-12 text-stone-400 group-hover:text-gold-600 transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif text-2xl text-stone-900 mb-4 group-hover:text-gold-700 transition-colors">Corporate & Commercial</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                        Strategic counsel for mergers, acquisitions, joint ventures, and complex commercial transactions. We draft and negotiate Sales & Purchase Agreements that protect your interests.
+                    </p>
+                    <ul class="text-xs text-stone-500 space-y-2 mb-8">
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>M&A Transactions</li>
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Shareholder Agreements</li>
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Due Diligence</li>
+                    </ul>
+                    <div class="flex items-center text-xs tracking-widest uppercase text-stone-400 group-hover:text-gold-600 transition-colors">
+                        <span>Learn More</span>
+                        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Real Estate -->
+                <div class="practice-card bg-stone-50 p-12 relative group cursor-pointer fade-up" style="transition-delay: 0.1s;">
+                    <div class="mb-6">
+                        <svg class="w-12 h-12 text-stone-400 group-hover:text-gold-600 transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif text-2xl text-stone-900 mb-4 group-hover:text-gold-700 transition-colors">Real Estate</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                        Comprehensive property law services from acquisition to development. We handle residential, commercial, and industrial transactions with meticulous attention to title and tenure.
+                    </p>
+                    <ul class="text-xs text-stone-500 space-y-2 mb-8">
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Property Conveyancing</li>
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Development Projects</li>
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Tenancy Disputes</li>
+                    </ul>
+                    <div class="flex items-center text-xs tracking-widest uppercase text-stone-400 group-hover:text-gold-600 transition-colors">
+                        <span>Learn More</span>
+                        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Personal Injury -->
+                <div class="practice-card bg-stone-50 p-12 relative group cursor-pointer fade-up" style="transition-delay: 0.2s;">
+                    <div class="mb-6">
+                        <svg class="w-12 h-12 text-stone-400 group-hover:text-gold-600 transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif text-2xl text-stone-900 mb-4 group-hover:text-gold-700 transition-colors">Personal Injury & Medical Negligence</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                        Compassionate representation for victims of accidents and clinical negligence. We secure fair compensation for catastrophic injuries, ensuring long-term care needs are met.
+                    </p>
+                    <ul class="text-xs text-stone-500 space-y-2 mb-8">
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Road Traffic Accidents</li>
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Clinical Negligence</li>
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Workplace Injuries</li>
+                    </ul>
+                    <div class="flex items-center text-xs tracking-widest uppercase text-stone-400 group-hover:text-gold-600 transition-colors">
+                        <span>Learn More</span>
+                        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Litigation -->
+                <div class="practice-card bg-stone-50 p-12 relative group cursor-pointer fade-up">
+                    <div class="mb-6">
+                        <svg class="w-12 h-12 text-stone-400 group-hover:text-gold-600 transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif text-2xl text-stone-900 mb-4 group-hover:text-gold-700 transition-colors">Litigation</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                        Resolute advocacy in civil and commercial disputes. Our litigators combine strategic thinking with courtroom excellence to achieve optimal outcomes, whether through trial or settlement.
+                    </p>
+                    <ul class="text-xs text-stone-500 space-y-2 mb-8">
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Commercial Disputes</li>
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Debt Recovery</li>
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Injunctions</li>
+                    </ul>
+                    <div class="flex items-center text-xs tracking-widest uppercase text-stone-400 group-hover:text-gold-600 transition-colors">
+                        <span>Learn More</span>
+                        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Criminal Defense -->
+                <div class="practice-card bg-stone-50 p-12 relative group cursor-pointer fade-up" style="transition-delay: 0.1s;">
+                    <div class="mb-6">
+                        <svg class="w-12 h-12 text-stone-400 group-hover:text-gold-600 transition-colors duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif text-2xl text-stone-900 mb-4 group-hover:text-gold-700 transition-colors">Criminal Defense</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-6">
+                        Vigorous defense of rights in criminal proceedings. From white-collar crimes to serious offenses, we provide discreet, determined representation at every stage of the criminal process.
+                    </p>
+                    <ul class="text-xs text-stone-500 space-y-2 mb-8">
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>White Collar Crime</li>
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Regulatory Offenses</li>
+                        <li class="flex items-center"><span class="w-1 h-1 bg-gold-400 rounded-full mr-3"></span>Appeals</li>
+                    </ul>
+                    <div class="flex items-center text-xs tracking-widest uppercase text-stone-400 group-hover:text-gold-600 transition-colors">
+                        <span>Learn More</span>
+                        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Contact CTA Card -->
+                <div class="bg-stone-900 p-12 relative flex flex-col justify-center items-center text-center fade-up" style="transition-delay: 0.2s;">
+                    <div class="w-16 h-16 border border-gold-400 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-serif text-2xl text-stone-100 mb-4">Require Counsel?</h3>
+                    <p class="text-stone-400 text-sm mb-8">Schedule a confidential consultation to discuss your legal needs.</p>
+                    <a href="#contact" class="inline-block border border-gold-400 text-gold-400 px-8 py-3 text-xs tracking-widest uppercase hover:bg-gold-400 hover:text-stone-900 transition-all duration-300">
+                        Contact Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- READERS CORNER SECTION -->
+    <section id="readers-corner" class="py-32 bg-stone-100 relative overflow-hidden">
+        <!-- Decorative background element -->
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-stone-200/50 -skew-x-12 transform origin-top-right"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="text-center mb-16 fade-up">
+                <span class="text-xs tracking-widest uppercase text-stone-500 block mb-4">Knowledge Hub</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-stone-900 mb-6">Reader's Corner</h2>
+                <p class="text-stone-600 max-w-2xl mx-auto font-light">Practical legal guidance for life's unexpected moments. Empowering you with knowledge before you need counsel.</p>
+                <div class="w-24 h-px bg-gold-400 mx-auto mt-8"></div>
+            </div>
+
+            <!-- Emergency Banner -->
+            <div class="emergency-banner rounded-sm p-8 mb-16 fade-up border-l-4 border-gold-400">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-12 h-12 bg-gold-400/20 rounded-full flex items-center justify-center flex-shrink-0">
+                            <svg class="w-6 h-6 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-xl text-stone-100 mb-2">Emergency Legal Assistance</h3>
+                            <p class="text-stone-400 text-sm">If you've been arrested, involved in a serious accident, or are facing immediate legal action, contact our 24-hour emergency line.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-6">
+                        <div class="text-right">
+                            <p class="text-xs text-stone-500 uppercase tracking-widest mb-1">24-Hour Hotline</p>
+                            <p class="text-2xl font-serif text-gold-400">+60 3 2180 9999</p>
+                        </div>
+                        <a href="tel:+60321809999" class="w-14 h-14 bg-gold-400 text-stone-900 rounded-full flex items-center justify-center hover:bg-gold-300 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Filter -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12 fade-up">
+                <button class="category-pill active px-6 py-2 border border-stone-400 text-xs tracking-widest uppercase rounded-full" onclick="filterArticles('all')">All Topics</button>
+                <button class="category-pill px-6 py-2 border border-stone-400 text-stone-600 text-xs tracking-widest uppercase rounded-full" onclick="filterArticles('accident')">Accidents</button>
+                <button class="category-pill px-6 py-2 border border-stone-400 text-stone-600 text-xs tracking-widest uppercase rounded-full" onclick="filterArticles('fraud')">Fraud Alert</button>
+                <button class="category-pill px-6 py-2 border border-stone-400 text-stone-600 text-xs tracking-widest uppercase rounded-full" onclick="filterArticles('corporate')">Corporate</button>
+                <button class="category-pill px-6 py-2 border border-stone-400 text-stone-600 text-xs tracking-widest uppercase rounded-full" onclick="filterArticles('rights')">Know Your Rights</button>
+            </div>
+
+            <!-- Featured Article (What to do in an accident) -->
+            <div class="bg-stone-50 rounded-sm overflow-hidden shadow-lg mb-12 fade-up article-item" data-category="accident">
+                <div class="grid md:grid-cols-2">
+                    <div class="relative h-64 md:h-auto overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&q=80&w=800" 
+                             alt="Car accident scene" 
+                             class="article-image w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-stone-900 text-stone-100 px-4 py-1 text-xs tracking-widest uppercase">Accident Guide</div>
+                    </div>
+                    <div class="p-8 md:p-12 flex flex-col justify-center">
+                        <div class="flex items-center space-x-4 text-xs text-stone-500 mb-4">
+                            <span>March 2026</span>
+                            <span class="w-1 h-1 bg-stone-400 rounded-full"></span>
+                            <span>8 min read</span>
+                        </div>
+                        <h3 class="font-serif text-3xl text-stone-900 mb-4">Immediately After an Accident: A Step-by-Step Legal Guide</h3>
+                        <p class="text-stone-600 mb-6 leading-relaxed">The moments following a motor vehicle accident are critical for both your safety and your legal position. This comprehensive guide outlines exactly what you must do to protect your rights and strengthen any future claim.</p>
+                        
+                        <div class="space-y-4 mb-8">
+                            <div class="guide-item flex items-start space-x-3 cursor-pointer" onclick="toggleGuide(this)">
+                                <div class="w-6 h-6 rounded-full border border-gold-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="text-xs text-gold-600 font-bold">1</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium text-stone-900 mb-1">Ensure Safety & Call Emergency Services</h4>
+                                    <div class="expandable-content">
+                                        <p class="text-sm text-stone-600 mt-2">Move to a safe location if possible. Call 999 for ambulance and police immediately, even for minor accidents. Police reports are crucial evidence for insurance and legal claims. Do not admit fault or apologize, as this may be construed as admission of liability.</p>
+                                    </div>
+                                </div>
+                                <svg class="w-5 h-5 text-stone-400 guide-icon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                            
+                            <div class="guide-item flex items-start space-x-3 cursor-pointer" onclick="toggleGuide(this)">
+                                <div class="w-6 h-6 rounded-full border border-gold-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="text-xs text-gold-600 font-bold">2</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium text-stone-900 mb-1">Document Everything</h4>
+                                    <div class="expandable-content">
+                                        <p class="text-sm text-stone-600 mt-2">Photograph all vehicles involved, license plates, road conditions, traffic signs, and injuries. Gather witness names and contact details. Note the time, weather conditions, and exact location. Request the police report number from attending officers.</p>
+                                    </div>
+                                </div>
+                                <svg class="w-5 h-5 text-stone-400 guide-icon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                            
+                            <div class="guide-item flex items-start space-x-3 cursor-pointer" onclick="toggleGuide(this)">
+                                <div class="w-6 h-6 rounded-full border border-gold-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <span class="text-xs text-gold-600 font-bold">3</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-medium text-stone-900 mb-1">Seek Medical Attention Immediately</h4>
+                                    <div class="expandable-content">
+                                        <p class="text-sm text-stone-600 mt-2">Some injuries manifest hours or days later. A medical record created immediately after the accident establishes causation. Keep all receipts and medical reports. Do not sign any releases from insurance companies without legal counsel.</p>
+                                    </div>
+                                </div>
+                                <svg class="w-5 h-5 text-stone-400 guide-icon flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <a href="#contact" class="inline-flex items-center text-xs tracking-widest uppercase text-gold-600 hover:text-gold-700 transition-colors">
+                            <span>Download Full Checklist (PDF)</span>
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <!-- Fraud Article -->
+                <article class="article-card bg-stone-50 rounded-sm overflow-hidden shadow-sm article-item fade-up" data-category="fraud">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=600" 
+                             alt="Fraud protection" 
+                             class="article-image w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-red-900/90 text-stone-100 px-3 py-1 text-xs tracking-widest uppercase">Fraud Alert</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 text-xs text-stone-500 mb-3">
+                            <span>March 2026</span>
+                            <span>•</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-stone-900 mb-3 hover:text-gold-700 transition-colors cursor-pointer">Recognizing Investment Fraud: Red Flags</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">Ponzi schemes and fraudulent investment opportunities often display specific warning signs. Learn to identify guaranteed returns, pressure tactics, and unlicensed sellers before your capital is at risk.</p>
+                        <button onclick="expandArticle(this)" class="text-xs tracking-widest uppercase text-stone-500 hover:text-gold-600 transition-colors flex items-center">
+                            Read More
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="expandable-content mt-4 pt-4 border-t border-stone-200">
+                            <p class="text-sm text-stone-600 mb-3"><strong>Common Warning Signs:</strong></p>
+                            <ul class="text-sm text-stone-600 space-y-2 list-disc list-inside">
+                                <li>Guaranteed high returns with little or no risk</li>
+                                <li>Overly consistent returns regardless of market conditions</li>
+                                <li>Complex strategies described as "secret" or "proprietary"</li>
+                                <li>Difficulty receiving payments or withdrawing principal</li>
+                                <li>Unregistered investments or unlicensed sellers</li>
+                            </ul>
+                            <p class="text-sm text-stone-600 mt-4">If you suspect fraud, document all communications and contact authorities immediately. Do not confront the fraudster directly.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Corporate Article -->
+                <article class="article-card bg-stone-50 rounded-sm overflow-hidden shadow-sm article-item fade-up" data-category="corporate" style="transition-delay: 0.1s;">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=600" 
+                             alt="Contract signing" 
+                             class="article-image w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-stone-700 text-stone-100 px-3 py-1 text-xs tracking-widest uppercase">Corporate</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 text-xs text-stone-500 mb-3">
+                            <span>Feb 2026</span>
+                            <span>•</span>
+                            <span>6 min read</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-stone-900 mb-3 hover:text-gold-700 transition-colors cursor-pointer">Understanding Sales & Purchase Agreements</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">SPA negotiations require scrutiny of representations, warranties, and indemnification clauses. Key considerations include asset vs. share purchases, material adverse change clauses, and post-completion adjustments.</p>
+                        <button onclick="expandArticle(this)" class="text-xs tracking-widest uppercase text-stone-500 hover:text-gold-600 transition-colors flex items-center">
+                            Read More
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="expandable-content mt-4 pt-4 border-t border-stone-200">
+                            <p class="text-sm text-stone-600 mb-3"><strong>Critical SPA Clauses:</strong></p>
+                            <ul class="text-sm text-stone-600 space-y-2 list-disc list-inside">
+                                <li><strong>Representations & Warranties:</strong> Seller's guarantees about the business condition</li>
+                                <li><strong>Indemnification:</strong> Protection against post-closing liabilities</li>
+                                <li><strong>Material Adverse Change (MAC):</strong> Conditions allowing deal termination</li>
+                                <li><strong>Escrow:</strong> Funds held back to secure warranty claims</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Rights Article -->
+                <article class="article-card bg-stone-50 rounded-sm overflow-hidden shadow-sm article-item fade-up" data-category="rights" style="transition-delay: 0.2s;">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=600" 
+                             alt="Legal rights" 
+                             class="article-image w-full h-full object-cover">
+                        <div class="absolute top-4 left-4 bg-gold-600 text-stone-100 px-3 py-1 text-xs tracking-widest uppercase">Know Your Rights</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 text-xs text-stone-500 mb-3">
+                            <span>Feb 2026</span>
+                            <span>•</span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3 class="font-serif text-xl text-stone-900 mb-3 hover:text-gold-700 transition-colors cursor-pointer">Your Rights During a Police Investigation</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">Understanding your constitutional rights during police questioning, arrest, and detention. When to remain silent, request counsel, and refuse consent to searches.</p>
+                        <button onclick="expandArticle(this)" class="text-xs tracking-widest uppercase text-stone-500 hover:text-gold-600 transition-colors flex items-center">
+                            Read More
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7"/>
+                            </svg>
+                        </button>
+                        <div class="expandable-content mt-4 pt-4 border-t border-stone-200">
+                            <p class="text-sm text-stone-600 mb-3"><strong>Fundamental Rights:</strong></p>
+                            <ul class="text-sm text-stone-600 space-y-2 list-disc list-inside">
+                                <li>Right to remain silent—use it immediately</li>
+                                <li>Right to legal counsel upon arrest</li>
+                                <li>Right to be informed of the grounds of arrest</li>
+                                <li>Right to communicate with family members</li>
+                                <li>Protection against unreasonable searches</li>
+                            </ul>
+                            <p class="text-sm text-stone-600 mt-4 italic">Always request a lawyer before answering questions. Police may continue questioning after you invoke rights—remain silent.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Quick Reference Cards -->
+            <div class="grid md:grid-cols-4 gap-6 fade-up">
+                <div class="bg-stone-50 p-6 border-t-2 border-gold-400">
+                    <div class="w-10 h-10 bg-stone-200 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="font-serif text-lg text-stone-900 mb-2">Document Checklist</h4>
+                    <p class="text-xs text-stone-600">Essential documents to gather before meeting your lawyer for any case type.</p>
+                </div>
+                
+                <div class="bg-stone-50 p-6 border-t-2 border-stone-400">
+                    <div class="w-10 h-10 bg-stone-200 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h4 class="font-serif text-lg text-stone-900 mb-2">Limitation Periods</h4>
+                    <p class="text-xs text-stone-600">Critical deadlines for filing claims—missing these bars your case forever.</p>
+                </div>
+                
+                <div class="bg-stone-50 p-6 border-t-2 border-stone-400">
+                    <div class="w-10 h-10 bg-stone-200 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h4 class="font-serif text-lg text-stone-900 mb-2">Fee Structures</h4>
+                    <p class="text-xs text-stone-600">Understanding contingency fees, hourly rates, and retainer agreements.</p>
+                </div>
+                
+                <div class="bg-stone-50 p-6 border-t-2 border-stone-400">
+                    <div class="w-10 h-10 bg-stone-200 rounded-full flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-stone-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h4 class="font-serif text-lg text-stone-900 mb-2">Legal Glossary</h4>
+                    <p class="text-xs text-stone-600">Plain English definitions of common legal terms you'll encounter.</p>
+                </div>
+            </div>
+
+            <!-- Newsletter Subscription -->
+            <div class="mt-16 bg-stone-900 p-8 md:p-12 rounded-sm text-center fade-up">
+                <h3 class="font-serif text-2xl text-stone-100 mb-4">Stay Informed</h3>
+                <p class="text-stone-400 text-sm mb-8 max-w-md mx-auto">Subscribe to our monthly legal digest featuring new legislation updates, case studies, and practical guides.</p>
+                <form class="flex flex-col md:flex-row gap-4 max-w-lg mx-auto" onsubmit="event.preventDefault(); alert('Thank you for subscribing to our legal digest.');">
+                    <input type="email" placeholder="Your email address" class="flex-1 bg-stone-800 border border-stone-700 px-4 py-3 text-stone-200 focus:border-gold-400 focus:outline-none transition-colors">
+                    <button type="submit" class="bg-gold-600 text-stone-900 px-8 py-3 text-xs tracking-widest uppercase hover:bg-gold-500 transition-colors font-medium">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-xs text-stone-600 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-32 bg-stone-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative fade-up">
+                    <div class="aspect-[3/4] bg-stone-300 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800" 
+                             alt="Senior partner" 
+                             class="w-full h-full object-cover grayscale">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-stone-900 text-stone-100 p-8 max-w-xs">
+                        <p class="font-serif text-lg italic mb-2">"Integrity above all."</p>
+                        <p class="text-xs text-stone-400 tracking-widest uppercase">Adanan Judin<br>Managing Partner</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-8 fade-up">
+                    <span class="text-xs tracking-widest uppercase text-stone-500">About the Firm</span>
+                    <h2 class="font-serif text-4xl md:text-5xl text-stone-900 leading-tight">
+                        A Legacy of <span class="italic text-stone-600">Excellence</span> & Integrity
+                    </h2>
+                    <div class="space-y-6 text-stone-600 leading-relaxed">
+                        <p>
+                            Founded in 2016, Aurelius & Partners has grown from a boutique commercial practice into one of the region's most respected full-service law firms. Our name reflects our philosophy: the golden mean of legal service—neither impersonal megafirm nor narrow specialist.
+                        </p>
+                        <p>
+                            We believe that exceptional legal counsel requires more than technical proficiency. It demands moral imagination, commercial acumen, and an unwavering commitment to the client's long-term interests. Our lawyers are advisors first, advocates always.
+                        </p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-8 pt-8 border-t border-stone-300">
+                        <div>
+                            <h4 class="font-serif text-xl text-stone-900 mb-2">Recognition</h4>
+                            <p class="text-sm text-stone-600">Panel bank with blabla bla</p>
+                        </div>
+                        <div>
+                            <h4 class="font-serif text-xl text-stone-900 mb-2">Philosophy</h4>
+                            <p class="text-sm text-stone-600">Solutions tailored to complexity, delivered with clarity and discretion</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-32 bg-stone-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="text-center mb-20 fade-up">
+                <span class="text-xs tracking-widest uppercase text-stone-500 block mb-4">Leadership</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-stone-900">Partners</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="group fade-up">
+                    <div class="aspect-[3/4] bg-stone-200 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=600" 
+                             alt="Partner" 
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/20 transition-colors duration-500"></div>
+                    </div>
+                    <h3 class="font-serif text-2xl text-stone-900">Adanan</h3>
+                    <p class="text-xs tracking-widest uppercase text-gold-600 mb-3">Managing Partner</p>
+                    <p class="text-sm text-stone-600">Corporate & Commercial Law. Harvard Law School. 25 years advising multinational corporations on complex cross-border transactions.</p>
+                </div>
+
+                <div class="group fade-up" style="transition-delay: 0.1s;">
+                    <div class="aspect-[3/4] bg-stone-200 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600" 
+                             alt="Partner" 
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/20 transition-colors duration-500"></div>
+                    </div>
+                    <h3 class="font-serif text-2xl text-stone-900">Yasmeen</h3>
+                    <p class="text-xs tracking-widest uppercase text-gold-600 mb-3">Senior Partner</p>
+                    <p class="text-sm text-stone-600">Litigation & Dispute Resolution. Cambridge University. Renowned for commercial arbitration and high-stakes civil litigation.</p>
+                </div>
+
+                <div class="group fade-up" style="transition-delay: 0.2s;">
+                    <div class="aspect-[3/4] bg-stone-200 mb-6 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" 
+                             alt="Partner" 
+                             class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-stone-900/0 group-hover:bg-stone-900/20 transition-colors duration-500"></div>
+                    </div>
+                    <h3 class="font-serif text-2xl text-stone-900">Razali</h3>
+                    <p class="text-xs tracking-widest uppercase text-gold-600 mb-3">Partner</p>
+                    <p class="text-sm text-stone-600">Real Estate & Construction. University of Malaya. Specialist in large-scale development projects and property investment structures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 bg-stone-900 text-stone-100 relative overflow-hidden">
+        <div class="absolute inset-0 hero-pattern opacity-20"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div class="fade-up">
+                    <span class="text-xs tracking-widest uppercase text-stone-500 block mb-4">Contact</span>
+                    <h2 class="font-serif text-4xl md:text-5xl mb-8">Begin the <span class="italic text-gold-400">Conversation</span></h2>
+                    <p class="text-stone-400 mb-12 max-w-md">
+                        Every legal journey begins with a single conversation. Reach out to schedule a confidential consultation at our offices.
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 border border-stone-700 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-lg mb-1">Kota Kinabalu</h4>
+                                <p class="text-sm text-stone-400">Unit No. K-61-6, Block K, Level 6, Signature Office, KK Times Square, Off Coastal Highway<br>88100 Kota Kinabalu, Sabah</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 border border-stone-700 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-lg mb-1">Email</h4>
+                                <p class="text-sm text-stone-400">ayrfirm@gmail.com (General)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <div class="w-12 h-12 border border-stone-700 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-5 h-5 text-gold-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-lg mb-1">Telephone</h4>
+                                <p class="text-sm text-stone-400">088-256786</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-stone-800 p-8 md:p-12 fade-up" style="transition-delay: 0.2s;">
+                    <form class="space-y-6" onsubmit="event.preventDefault(); alert('Thank you for your inquiry. We will contact you shortly.');">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Name</label>
+                                <input type="text" class="w-full bg-stone-900 border border-stone-700 px-4 py-3 text-stone-200 focus:border-gold-400 focus:outline-none transition-colors" placeholder="Your full name">
+                            </div>
+                            <div>
+                                <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Email</label>
+                                <input type="email" class="w-full bg-stone-900 border border-stone-700 px-4 py-3 text-stone-200 focus:border-gold-400 focus:outline-none transition-colors" placeholder                                 <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Email</label>
+                                <input type="email" class="w-full bg-stone-900 border border-stone-700 px-4 py-3 text-stone-200 focus:border-gold-400 focus:outline-none transition-colors" placeholder="email@example.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Practice Area</label>
+                            <select class="w-full bg-stone-900 border border-stone-700 px-4 py-3 text-stone-400 focus:border-gold-400 focus:outline-none transition-colors">
+                                <option>Select a practice area</option>
+                                <option>Corporate & Commercial</option>
+                                <option>Real Estate</option>
+                                <option>Personal Injury</option>
+                                <option>Litigation</option>
+                                <option>Criminal Defense</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs tracking-widest uppercase text-stone-500 mb-2">Message</label>
+                            <textarea rows="4" class="w-full bg-stone-900 border border-stone-700 px-4 py-3 text-stone-200 focus:border-gold-400 focus:outline-none transition-colors resize-none" placeholder="Briefly describe your legal needs..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-gold-600 text-stone-900 py-4 text-xs tracking-widest uppercase hover:bg-gold-500 transition-colors font-medium">
+                            Submit Inquiry
+                        </button>
+                        
+                        <p class="text-xs text-stone-500 text-center">
+                            All inquiries are strictly confidential and protected by attorney-client privilege.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 text-stone-400 py-12 border-t border-stone-900">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="w-8 h-8 border border-stone-700 flex items-center justify-center">
+                        <span class="font-serif text-lg text-stone-500">A</span>
+                    </div>
+                    <span class="font-serif text-lg text-stone-300">AURELIUS & PARTNERS</span>
+                </div>
+                
+                <div class="flex space-x-8 text-xs tracking-widest uppercase">
+                    <a href="#" class="hover:text-gold-400 transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-gold-400 transition-colors">Terms</a>
+                    <a href="#" class="hover:text-gold-400 transition-colors">Careers</a>
+                </div>
+                
+                <div class="text-xs text-stone-600 mt-4 md:mt-0">
+                    &copy; 2026 Aurelius & Partners. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // // Custom Cursor
+        // const cursor = document.getElementById('cursor');
+        // let mouseX = 0, mouseY = 0;
+        // let cursorX = 0, cursorY = 0;
+        
+        // document.addEventListener('mousemove', (e) => {
+        //     mouseX = e.clientX;
+        //     mouseY = e.clientY;
+        // });
+        
+        // function animateCursor() {
+        //     cursorX += (mouseX - cursorX) * 0.1;
+        //     cursorY += (mouseY - cursorY) * 0.1;
+        //     cursor.style.left = cursorX - 10 + 'px';
+        //     cursor.style.top = cursorY - 10 + 'px';
+        //     requestAnimationFrame(animateCursor);
+        // }
+        // animateCursor();
+        
+        // // Hover effect for cursor
+        // document.querySelectorAll('a, button, .practice-card, .article-card').forEach(el => {
+        //     el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        //     el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        // });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Navbar scroll effect
+        let lastScroll = 0;
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('bg-stone-50/95', 'backdrop-blur-sm', 'shadow-sm');
+            } else {
+                navbar.classList.remove('bg-stone-50/95', 'backdrop-blur-sm', 'shadow-sm');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // Intersection Observer for fade-up animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate numbers if it's a stat section
+                    if (entry.target.querySelector('.stat-number')) {
+                        animateNumbers(entry.target);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Number animation
+        function animateNumbers(container) {
+            const numbers = container.querySelectorAll('.stat-number');
+            numbers.forEach(num => {
+                const target = parseInt(num.getAttribute('data-target'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        num.textContent = target + (target === 98 ? '%' : '+');
+                        clearInterval(timer);
+                    } else {
+                        num.textContent = Math.floor(current);
+                    }
+                }, 16);
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobileMenu').classList.add('hidden');
+                }
+            });
+        });
+
+        // Readers Corner Specific Functions
+        
+        // Filter articles by category
+        function filterArticles(category) {
+            // Update active button
+            document.querySelectorAll('.category-pill').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(category) || (category === 'all' && btn.textContent.includes('All'))) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filter articles
+            const articles = document.querySelectorAll('.article-item');
+            articles.forEach(article => {
+                if (category === 'all' || article.getAttribute('data-category') === category) {
+                    article.style.display = 'block';
+                    setTimeout(() => {
+                        article.style.opacity = '1';
+                        article.style.transform = 'translateY(0)';
+                    }, 50);
+                } else {
+                    article.style.opacity = '0';
+                    article.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        article.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Toggle expandable guide items
+        function toggleGuide(element) {
+            const content = element.querySelector('.expandable-content');
+            const icon = element.querySelector('.guide-icon');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Close other open guides in the same container
+                element.parentElement.querySelectorAll('.expandable-content.expanded').forEach(el => {
+                    el.classList.remove('expanded');
+                    el.parentElement.parentElement.querySelector('.guide-icon').style.transform = 'rotate(0deg)';
+                });
+                
+                content.classList.add('expanded');
+                icon.style.transform = 'rotate(90deg)';
+            }
+        }
+
+        // Expand article content
+        function expandArticle(button) {
+            const card = button.closest('article');
+            const content = card.querySelector('.expandable-content');
+            const isExpanded = content.classList.contains('expanded');
+            
+            if (isExpanded) {
+                content.classList.remove('expanded');
+                button.innerHTML = `
+                    Read More
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                `;
+            } else {
+                content.classList.add('expanded');
+                button.innerHTML = `
+                    Read Less
+                    <svg class="w-4 h-4 ml-1 transform rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7"/>
+                    </svg>
+                `;
+            }
+        }
+
+        // Add subtle parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-pattern');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
